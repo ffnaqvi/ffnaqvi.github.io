@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: page
 ---
 
-## Welcome to another page
+## About
 
 _yay_
 
