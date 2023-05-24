@@ -48,6 +48,8 @@ minima:
 #
  header_pages:
    - about.md
+   - resume.md
+   - projects.md
 
 # Set to `true` to show excerpts on the homepage.
 #
