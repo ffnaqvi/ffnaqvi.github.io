@@ -1,7 +1,7 @@
 title: Faizah Naqvi
 author:
-  name: Faizah Navqi
-  email: faizah_naqvi@brown.edu
+  name: Github User
+  email: ffnaqvi
 
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
@@ -11,10 +11,6 @@ description: >
 # Build settings
 
 theme: minima
-
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
 
 # Theme-specific settings
 
