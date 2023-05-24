@@ -8,6 +8,11 @@ layout: base
   {%- endif -%}
 
   {{ content }}
+  
+ 
+  {% if site.logo %}
+     <img src="{{site.logo | relative_url}}" alt="Logo" />
+  {% endif %}
 
 
   {% if site.paginate %}
