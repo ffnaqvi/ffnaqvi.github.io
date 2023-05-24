@@ -9,11 +9,9 @@ layout: base
 
   {{ content }}
   
- 
-  {% if site.logo %}
+    {% if site.logo %}
      <img src="{{site.logo | relative_url}}" alt="Logo" />
   {% endif %}
-
 
   {% if site.paginate %}
     {% assign posts = paginator.posts %}
