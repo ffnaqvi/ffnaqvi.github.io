@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Faizah Naqvi
+[Link to another page](./another-page.html).
 
 My name is X and I have X projects. CS15 STA. 
 
