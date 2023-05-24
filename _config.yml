@@ -1,12 +1,12 @@
 title: Faizah Naqvi
 author:
-  name: Github User
-  email: ffnaqvi
+  name: Github: ffnaqvi
+  email: faizah_naqvi@brown.edu
 
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
-  this is a footer
+  Created with Github pages
 
 # Build settings
 
