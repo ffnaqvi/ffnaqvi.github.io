@@ -61,7 +61,7 @@
 				<div class="text-center">
 					<div class="author-img" style="background-image: url(images/faizah\ headshot.jpg);"></div>
 					<h1 id="colorlib-logo"><a href="index.html">Faizah Naqvi</a></h1>
-					<span class="position"><a href="#">Undergraduate Student</a></span>
+					<span class="position"><a href="#">Graduate Student</a></span>
 				</div>
 				<nav id="colorlib-main-menu" role="navigation" class="navbar">
 					<div id="navbar" class="collapse">
@@ -121,6 +121,7 @@
 					</div>
 				</section>
 
+
 				<section class="colorlib-about" data-section="about">
 					<div class="colorlib-narrow-content">
 						<div class="row">
@@ -130,10 +131,12 @@
 										<div class="about-desc">
 											<span class="heading-meta">About Me</span>
 											<h2 class="colorlib-heading">Who Am I?</h2>
-											<p><strong>Hi, I'm Faizah Naqvi</strong> — an undergraduate student at <a
+											<p><strong>Hi, I'm Faizah Naqvi</strong> — a graduate student at <a
 													href="https://www.brown.edu/">Brown University</a> pursuing a
 												concurrent Bachelor's and Master's in Computer Science. I'm especially
 												passionate about computer networking, cybersecurity, and data privacy.
+												Currently I'm looking for new grad software engineering roles in
+												industry.
 											</p>
 
 											<p>
@@ -324,8 +327,7 @@
 										<p>Developed an AI Ethics framework to guide developers in applying ethical
 											principles to AI systems.
 										</p>
-										<a href="https://link.springer.com/article/10.1007/s43681-024-00469-8#Abs1"><i
-												class="icon-link"></i></a>
+										<span class="click-icon" style="font-size: 1.2em; color: #2c98f0;">🖱️</span>
 									</div>
 								</div>
 							</div>
@@ -338,7 +340,7 @@
 											transmission. Integrated RIP routing protocol with poison reverse and split
 											horizon to enhance network efficiency.
 										</p>
-
+										<span class="click-icon" style="font-size: 1.2em; color: #2c98f0;">🖱️</span>
 									</div>
 								</div>
 							</div>
@@ -352,7 +354,7 @@
 										<p>Developed full stack web mapping application overlaying redlining data with
 											user authentication, dynamic pin storage, and data management via Firebase.
 										</p>
-
+										<span class="click-icon" style="font-size: 1.2em; color: #2c98f0;">🖱️</span>
 									</div>
 								</div>
 							</div>
@@ -364,8 +366,7 @@
 										<h3>Rookie to Cookie</h3>
 										<p>Web application to generate personalized meal plans, using KDTree algorithms
 											for meal recommendations. Partnered project.</p>
-										<!-- <a
-											href="https://github.com/cs0320-s24/term-project-mshaffe3-ddedona-ffnaqvi-abousque"><i class="icon-github"></i></a> -->
+										<span class="click-icon" style="font-size: 1.2em; color: #2c98f0;">🖱️</span>
 									</div>
 								</div>
 							</div>
@@ -377,7 +378,7 @@
 										<p>Built a multi-threaded client server in C++ to handle multiple concurrent
 											users over a network.
 										</p>
-
+										<span class="click-icon" style="font-size: 1.2em; color: #2c98f0;">🖱️</span>
 									</div>
 								</div>
 							</div>
@@ -390,9 +391,7 @@
 										<p>Developed a mock internet radio in Go, handling multi-threaded TCP
 											connections to a client and streaming UDP data over correlated client
 											listeners from a server. </p>
-										<!-- <a
-											href="https://github.com/cs0320-s24/maps-ffnaqvi-sdong"><i
-												class="icon-github"></i></a> -->
+										<span class="click-icon" style="font-size: 1.2em; color: #2c98f0;">🖱️</span>
 									</div>
 								</div>
 							</div>
@@ -522,15 +521,13 @@
 													<ul>
 														<li>Computer Networks</li>
 														<li>Computer Systems</li>
-														<li>Computational Linguistics</li>
-														<li>Software Security Exploitation</li>
+														<li>Software Security</li>
+														<li>Deep Learning</li>
+														<li>Database Management Systems</li>
 														<li>Data Structures and Algorithms</li>
 														<li>Data Science</li>
-														<li>Discrete Structures and Probability</li>
 														<li>Software Engineering</li>
-														<li>Object Oriented Programming</li>
-														<li>Statistical Inference I</li>
-														<li>Linear Algebra</li>
+								
 														<li>Multivariable Calculus</li>
 													</ul>
 
@@ -575,6 +572,16 @@
 		</div><!-- end:container-wrap -->
 	</div><!-- end:colorlib-page -->
 
+	<!-- Project Details Modal -->
+	<div id="projectModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div id="modalContent">
+				<!-- Project details will be populated here -->
+			</div>
+		</div>
+	</div>
+
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -601,29 +608,256 @@
 
 			// Wait 3 seconds before starting the scroll
 			setTimeout(() => {
-				const start = window.scrollY;
-				const end = aboutSection.offsetTop;
-				const duration = 3000; // scroll duration in ms
-				const startTime = performance.now();
+				// Only scroll if user is still at the top of the page
+				if (window.scrollY <= 50) { // Allow small tolerance for minor scrolling
+					const start = window.scrollY;
+					const end = aboutSection.offsetTop;
+					const duration = 3000; // scroll duration in ms
+					const startTime = performance.now();
 
-				function scrollStep(currentTime) {
-					const elapsed = currentTime - startTime;
-					const progress = Math.min(elapsed / duration, 1);
-					// Ease-in-out function
-					const ease = progress < 0.5
-						? 2 * progress * progress
-						: -1 + (4 - 2 * progress) * progress;
+					function scrollStep(currentTime) {
+						const elapsed = currentTime - startTime;
+						const progress = Math.min(elapsed / duration, 1);
+						// Ease-in-out function
+						const ease = progress < 0.5
+							? 2 * progress * progress
+							: -1 + (4 - 2 * progress) * progress;
 
-					window.scrollTo(0, start + (end - start) * ease);
+						window.scrollTo(0, start + (end - start) * ease);
 
-					if (progress < 1) {
-						requestAnimationFrame(scrollStep);
+						if (progress < 1) {
+							requestAnimationFrame(scrollStep);
+						}
 					}
-				}
 
-				requestAnimationFrame(scrollStep);
+					requestAnimationFrame(scrollStep);
+				}
 			}, 3000); // 3 seconds wait
 		});
+
+	// Project Modal Functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const modal = document.getElementById('projectModal');
+		const modalContent = document.getElementById('modalContent');
+		const closeBtn = document.getElementsByClassName('close')[0];
+		
+		// Project data
+		const projects = {
+			'ai-ethics': {
+				title: 'Crossing the Gap in AI Ethics',
+				icon: '⚖️',
+				description: 'Developed an AI Ethics framework to guide developers in applying ethical principles to AI systems.',
+				details: `
+					<p>This research project focused on creating a comprehensive framework for implementing ethical considerations in AI development. The framework addresses the growing need for responsible AI practices in the industry.</p>
+					
+					<h3>Key Contributions</h3>
+					<ul>
+						<li>Developed a systematic approach to ethical AI development</li>
+						<li>Created guidelines for developers to implement ethical principles</li>
+						<li>Published research in a peer-reviewed journal</li>
+						<li>Addressed real-world challenges in AI ethics implementation</li>
+					</ul>
+					
+					<h3>Impact</h3>
+					<p>The framework has been designed to be practical and actionable for developers, helping bridge the gap between theoretical ethical principles and practical implementation in AI systems.</p>
+				`,
+				techStack: ['Research', 'AI Ethics', 'Framework Development', 'Academic Writing'],
+				links: [
+					{ text: 'View Publication', url: 'https://link.springer.com/article/10.1007/s43681-024-00469-8#Abs1' }
+				]
+			},
+			'virtual-ip': {
+				title: 'Virtual IP',
+				icon: '🌐',
+				description: 'Implemented IP forwarding and routing with UDP sockets to simulate packet transmission. Integrated RIP routing protocol with poison reverse and split horizon to enhance network efficiency.',
+				details: `
+					<p>A comprehensive networking project that simulates IP routing and forwarding mechanisms using UDP sockets. The implementation includes advanced routing protocols and network optimization techniques.</p>
+					
+					<h3>Key Features</h3>
+					<ul>
+						<li>IP packet forwarding and routing simulation</li>
+						<li>UDP socket implementation for packet transmission</li>
+						<li>RIP (Routing Information Protocol) integration</li>
+						<li>Poison reverse and split horizon techniques</li>
+						<li>Network efficiency optimization</li>
+					</ul>
+					
+					<h3>Technical Implementation</h3>
+					<p>The project demonstrates deep understanding of network protocols, socket programming, and routing algorithms. It includes both theoretical concepts and practical implementation of networking principles.</p>
+				`,
+				techStack: ['C++', 'UDP Sockets', 'Network Programming', 'RIP Protocol', 'Routing Algorithms'],
+				links: []
+			},
+			'redlining-maps': {
+				title: 'Redlining Maps',
+				icon: '🗺️',
+				description: 'Developed full stack web mapping application overlaying redlining data with user authentication, dynamic pin storage, and data management via Firebase.',
+				details: `
+					<p>A full-stack web application that visualizes historical redlining data through interactive maps. The project combines web development, data visualization, and social impact to address important historical and contemporary issues.</p>
+					
+					<h3>Key Features</h3>
+					<ul>
+						<li>Interactive web mapping interface</li>
+						<li>Historical redlining data visualization</li>
+						<li>User authentication system</li>
+						<li>Dynamic pin storage and management</li>
+						<li>Firebase backend integration</li>
+						<li>Real-time data updates</li>
+					</ul>
+					
+					<h3>Social Impact</h3>
+					<p>This project addresses important social justice issues by making historical redlining data accessible and interactive, helping users understand the lasting impact of discriminatory housing practices.</p>
+				`,
+				techStack: ['JavaScript', 'HTML/CSS', 'Firebase', 'Web Mapping', 'Authentication', 'Data Visualization'],
+				links: []
+			},
+			'rookie-cookie': {
+				title: 'Rookie to Cookie',
+				icon: '🍪',
+				description: 'Web application to generate personalized meal plans, using KDTree algorithms for meal recommendations. Partnered project.',
+				details: `
+					<p>A collaborative web application that generates personalized meal plans using advanced algorithms. The project combines data structures, user experience design, and practical utility for meal planning.</p>
+					
+					<h3>Key Features</h3>
+					<ul>
+						<li>Personalized meal plan generation</li>
+						<li>KDTree algorithm implementation for recommendations</li>
+						<li>User-friendly web interface</li>
+						<li>Nutritional data integration</li>
+						<li>Collaborative development approach</li>
+					</ul>
+					
+					<h3>Technical Highlights</h3>
+					<p>The use of KDTree algorithms demonstrates advanced understanding of data structures and their practical applications in recommendation systems.</p>
+				`,
+				techStack: ['JavaScript', 'HTML/CSS', 'KDTree Algorithms', 'Web Development', 'Data Structures'],
+				links: []
+			},
+			'database': {
+				title: 'Database',
+				icon: '🗄️',
+				description: 'Built a multi-threaded client server in C++ to handle multiple concurrent users over a network.',
+				details: `
+					<p>A robust database system implementation using C++ with multi-threading capabilities. The project demonstrates advanced systems programming concepts and network communication.</p>
+					
+					<h3>Key Features</h3>
+					<ul>
+						<li>Multi-threaded server architecture</li>
+						<li>Concurrent user handling</li>
+						<li>Network communication protocols</li>
+						<li>Database operations and queries</li>
+						<li>Thread safety and synchronization</li>
+					</ul>
+					
+					<h3>Technical Implementation</h3>
+					<p>This project showcases advanced C++ programming, multi-threading concepts, and network programming skills essential for building scalable database systems.</p>
+				`,
+				techStack: ['C++', 'Multi-threading', 'Network Programming', 'Database Systems', 'Concurrency'],
+				links: []
+			},
+			'mock-radio': {
+				title: 'Mock Internet Radio',
+				icon: '📻',
+				description: 'Developed a mock internet radio in Go, handling multi-threaded TCP connections to a client and streaming UDP data over correlated client listeners from a server.',
+				details: `
+					<p>An internet radio simulation built in Go that demonstrates advanced networking concepts, multi-threading, and real-time data streaming. The project combines multiple networking protocols for efficient data transmission.</p>
+					
+					<h3>Key Features</h3>
+					<ul>
+						<li>Multi-threaded TCP connection handling</li>
+						<li>UDP data streaming for audio content</li>
+						<li>Client-server architecture</li>
+						<li>Real-time audio streaming simulation</li>
+						<li>Concurrent listener management</li>
+					</ul>
+					
+					<h3>Technical Highlights</h3>
+					<p>The project demonstrates proficiency in Go programming, network protocols (TCP/UDP), and real-time systems programming concepts.</p>
+				`,
+				techStack: ['Go', 'TCP/UDP', 'Multi-threading', 'Network Programming', 'Real-time Systems'],
+				links: []
+			}
+		};
+
+		// Add click event listeners to all project boxes
+		document.querySelectorAll('.services').forEach((service, index) => {
+			service.addEventListener('click', function() {
+				// Get project data based on the project title
+				const projectTitle = this.querySelector('h3').textContent.trim();
+				let projectKey = '';
+				
+				// Map project titles to keys
+				switch(projectTitle) {
+					case 'Crossing the Gap in AI Ethics':
+						projectKey = 'ai-ethics';
+						break;
+					case 'Virtual IP':
+						projectKey = 'virtual-ip';
+						break;
+					case 'Redlining Maps':
+						projectKey = 'redlining-maps';
+						break;
+					case 'Rookie to Cookie':
+						projectKey = 'rookie-cookie';
+						break;
+					case 'Database':
+						projectKey = 'database';
+						break;
+					case 'Mock Internet Radio':
+						projectKey = 'mock-radio';
+						break;
+					default:
+						return;
+				}
+				
+				const project = projects[projectKey];
+				if (project) {
+					showProjectModal(project);
+				}
+			});
+		});
+
+		// Function to show project modal
+		function showProjectModal(project) {
+			modalContent.innerHTML = `
+				<h2>${project.icon} ${project.title}</h2>
+				<p><strong>${project.description}</strong></p>
+				${project.details}
+				<div class="tech-stack">
+					<h4>Technologies Used</h4>
+					<div class="tech-tags">
+						${project.techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+					</div>
+				</div>
+				${project.links.length > 0 ? `
+					<div class="project-links">
+						<h4>Project Links</h4>
+						${project.links.map(link => `<a href="${link.url}" target="_blank">${link.text}</a>`).join('')}
+					</div>
+				` : ''}
+			`;
+			modal.style.display = 'block';
+		}
+
+		// Close modal when clicking the X
+		closeBtn.onclick = function() {
+			modal.style.display = 'none';
+		}
+
+		// Close modal when clicking outside of it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = 'none';
+			}
+		}
+
+		// Close modal with Escape key
+		document.addEventListener('keydown', function(event) {
+			if (event.key === 'Escape' && modal.style.display === 'block') {
+				modal.style.display = 'none';
+			}
+		});
+	});
 	</script>
 
 
